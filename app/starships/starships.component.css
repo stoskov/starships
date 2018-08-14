@@ -1,0 +1,22 @@
+.starship-item-container {
+    padding: 10;
+}
+
+.starship-item {
+    border-color: #ddd;
+    border-width: 1;
+    border-radius: 10;
+}
+
+.starship-image {
+    border-radius: 10 10 0 0;
+}
+
+.starship-name-container {
+    padding: 10;
+    font-size: 18;
+}
+
+.starship-name {
+    font-weight: bold;
+}

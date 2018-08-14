@@ -1,1 +1,8 @@
-<page-router-outlet></page-router-outlet>
+<TabView androidTabsPosition="bottom">
+    
+    <page-router-outlet *tabItem="{title: 'Home'}" name="starships"> </page-router-outlet>
+    <page-router-outlet *tabItem="{title: 'Work'}" name="work"> </page-router-outlet>
+    <page-router-outlet *tabItem="{title: 'Settings'}" name="settings"> </page-router-outlet>
+
+</TabView>
+

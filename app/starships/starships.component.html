@@ -2,6 +2,21 @@
     <Label class="action-bar-title" text="Home"></Label>
 </ActionBar>
 
+
 <GridLayout class="page">
-    <!-- Add your page content here -->
+    <RadListView [items]="starhipsList" (itemTap)="onTap($event)">
+
+        <ng-template let-item="item">
+            <StackLayout class="starship-item-container">
+                <GridLayout rows="auto, auto" class="starship-item">
+                    <Image class="starship-image" row="0" [src]="item.imageUrl" stretch="aspectFit"></Image>
+                    <StackLayout row="1" class="starship-name-container">
+                        <Label class="starship-name" [text]="item.name"></Label>
+                        <Label class="starship-model" [text]="item.model"></Label>
+                    </StackLayout>
+                </GridLayout>
+            </StackLayout>
+        </ng-template>
+
+    </RadListView>
 </GridLayout>
