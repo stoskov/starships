@@ -12,27 +12,37 @@ export class StarshipsService {
 
     }
 
-
     getAllStarships() {
         let headers = this.getCommonHeaders();
 
         return this.http.get(this.starshipsUrl, { headers })
             .pipe(
-                // map(res => res.json()),
                 map(res => {
                     let data = res.json();
                     let starshipsList = [];
 
                     data.results.forEach((starship) => {
-                        let id = starship.url.replace("https://swapi.co/api/starships/", "").replace("/", "");
-                        let imageUrl = "https://raw.githubusercontent.com/rdlauer/starwarsimages/master/images/" + id + ".jpg";
-                        starshipsList.push(new Starship(starship.url, starship.name, starship.model, imageUrl));
+                        starshipsList.push(new Starship(starship));
                     });
 
                     return starshipsList;
                 }),
                 catchError(this.handleErrors)
-            )
+            ).toPromise()
+    }
+
+    getStarshipById(id: string) {
+        let headers = this.getCommonHeaders();
+
+        return this.http.get(this.starshipsUrl + "/" + id, { headers })
+            .pipe(
+                map(res => {
+                    let data = res.json();
+
+                    return new Starship(data);
+                }),
+                catchError(this.handleErrors)
+            ).toPromise()
     }
 
     getCommonHeaders() {

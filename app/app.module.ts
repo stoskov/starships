@@ -5,7 +5,6 @@ import { AppComponent } from "~/app.component";
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular/listview-directives";
 
-
 @NgModule({
     bootstrap: [
         AppComponent

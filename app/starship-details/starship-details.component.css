@@ -1,0 +1,37 @@
+.details-container {
+    margin: 15;
+}
+
+.starship-details-images {
+    margin-top: 20;
+}
+
+.starship-details-images .starship-details-image { 
+    width: 70;
+    padding: 40;
+}
+
+.starship-details-item .label {
+    margin: 0 5;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.section {
+    font-weight: bold;
+    font-size: 22;
+    margin-bottom: 10; 
+}
+
+.work-order-item-container {
+    
+}
+
+.work-order-item-separator {
+    border-width: 1;
+    border-color: #ccc;
+    margin-top: 5;
+}
+

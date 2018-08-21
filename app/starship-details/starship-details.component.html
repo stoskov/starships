@@ -1,0 +1,71 @@
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" [text]="starship.name ? starship.name : 'Details'"></Label>
+</ActionBar>
+
+<ScrollView>
+    <GridLayout>
+        <StackLayout [visibility]="isLoading ? 'collapse' : 'visible'">
+            <Image class="starship-image" [src]="starship.imageUrl" stretch="aspectFit"></Image>
+
+            <StackLayout class="details-container">
+                <StackLayout class="starship-details-item" orientation="horizontal">
+                    <Label class="label" text="Model:"></Label>
+                    <Label class="value" [text]="starship.model"></Label>
+                </StackLayout>
+                <StackLayout class="starship-details-item" orientation="horizontal">
+                    <Label class="label" text="Manufacturer:"></Label>
+                    <Label class="value" [text]="starship.manufacturer"></Label>
+                </StackLayout>
+                <StackLayout class="starship-details-item" orientation="horizontal">
+                    <Label class="label" text="Length:"></Label>
+                    <Label class="value" [text]="starship.length"></Label>
+                </StackLayout>
+                <StackLayout class="starship-details-item" orientation="horizontal">
+                    <Label class="label" text="Max Speed:"></Label>
+                    <Label class="value" [text]="starship.maxSpeed"></Label>
+                </StackLayout>
+
+                <GridLayout class="starship-details-images" rows="*, *" , columns="*, *, *" horizontalAlignment="center" verticalAlignment="center">
+                    <Image class="starship-details-image" row="0" col="0" src="~/icons/stormtrooper.png" stretch="aspectFit"></Image>
+                    <StackLayout row="1" col="0" horizontalAlignment="center" verticalAlignment="center">
+                        <Label class="label" text="Crew:"></Label>
+                        <Label class="value" [text]="starship.crew"></Label>
+                    </StackLayout>
+                    <Image class="starship-details-image" row="0" col="1" src="~/icons/leia.png" stretch="aspectFit"></Image>
+                    <StackLayout row="1" col="1" horizontalAlignment="center" verticalAlignment="center">
+                        <Label class="label" text="Passengers:"></Label>
+                        <Label class="value" [text]="starship.passengers"></Label>
+                    </StackLayout>
+                    <Image class="starship-details-image" row="0" col="2" src="~/icons/spoonfork.png" stretch="aspectFit"></Image>
+                    <StackLayout row="1" col="2" horizontalAlignment="center">
+                        <Label class="label" text="Consumables:"></Label>
+                        <Label class="value" [text]="starship.consumables"></Label>
+                    </StackLayout>
+                </GridLayout>
+
+                <Label class="section" text="Work Orders"></Label>
+
+                <RadListView [items]="workOrdersList" (itemTap)="onTapOrder($event)">
+
+                    <ng-template let-item="item">
+                        <GridLayout verticalAlignment="center" rows="auto, auto" columns="*, *" class="work-order-item-container">
+
+                            <StackLayout col="0">
+                                <Label style="font-weight: bold;" [text]="item.subject"></Label>
+                                <StackLayout orientation="horizontal">
+                                    <Label style="margin-right: 10;" [text]="item.status"></Label>                                    
+                                </StackLayout>
+                            </StackLayout>
+
+                            <Image style="width: 40;" row="0" col="1" src="~/icons/arrow.png" stretch="aspectFit"></Image>
+
+                            <StackLayout row="1" col="0" colSpan="2" class="work-order-item-separator"></StackLayout>
+                        </GridLayout>
+                    </ng-template>
+
+                </RadListView>
+            </StackLayout>
+        </StackLayout>
+        <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
+    </GridLayout>
+</ScrollView>

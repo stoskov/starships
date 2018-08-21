@@ -1,22 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = require("tslib");
 var core_1 = require("@angular/core");
 var router_1 = require("nativescript-angular/router");
-var starships_component_1 = require("./starships/starships.component");
-var work_component_1 = require("./work/work.component");
-var settings_component_1 = require("./settings/settings.component");
+var starships_component_1 = require("~/starships/starships.component");
+var starship_details_component_1 = require("~/starship-details/starship-details.component");
+var work_component_1 = require("~/work/work.component");
+var settings_component_1 = require("~/settings/settings.component");
+var work_order_details_component_1 = require("./work-order-details/work-order-details.component");
 var routes = [
     { path: "", redirectTo: "/(starships:starships//work:work//settings:settings)", pathMatch: "full" },
-    { path: "starships", component: starships_component_1.StarshipsComponent, outlet: "starships" },
-    // { path: "starship-details/:id", component: StarshipDetailsComponent},
+    // { path: "starships", component: StarshipsComponent, outlet: "starships" },
+    { path: "starships", component: starship_details_component_1.StarshipDetailsComponent, outlet: "starships" },
+    // { path: "starship-details/:id", component: StarshipDetailsComponent, outlet: "starships"},
+    { path: "work-order-details/:id", component: work_order_details_component_1.WorkOrderDetailsComponent, outlet: "starships" },
     { path: "work", component: work_component_1.WorkComponent, outlet: "work" },
     { path: "settings", component: settings_component_1.SettingsComponent, outlet: "settings" }
 ];
-exports.Components = [starships_component_1.StarshipsComponent, work_component_1.WorkComponent, settings_component_1.SettingsComponent];
+exports.Components = [starships_component_1.StarshipsComponent, starship_details_component_1.StarshipDetailsComponent, work_component_1.WorkComponent, work_order_details_component_1.WorkOrderDetailsComponent, settings_component_1.SettingsComponent];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
-    AppRoutingModule = __decorate([
+    AppRoutingModule = tslib_1.__decorate([
         core_1.NgModule({
             imports: [router_1.NativeScriptRouterModule.forRoot(routes)],
             exports: [router_1.NativeScriptRouterModule]
@@ -25,4 +30,3 @@ var AppRoutingModule = /** @class */ (function () {
     return AppRoutingModule;
 }());
 exports.AppRoutingModule = AppRoutingModule;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLXJvdXRpbmcubW9kdWxlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiYXBwLXJvdXRpbmcubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsc0NBQXlDO0FBRXpDLHNEQUF1RTtBQUN2RSx1RUFBcUU7QUFDckUsd0RBQXNEO0FBQ3RELG9FQUFrRTtBQUVsRSxJQUFNLE1BQU0sR0FBVztJQUNuQixFQUFFLElBQUksRUFBRSxFQUFFLEVBQUUsVUFBVSxFQUFFLHNEQUFzRCxFQUFFLFNBQVMsRUFBRSxNQUFNLEVBQUU7SUFDbkcsRUFBRSxJQUFJLEVBQUUsV0FBVyxFQUFFLFNBQVMsRUFBRSx3Q0FBa0IsRUFBRSxNQUFNLEVBQUUsV0FBVyxFQUFFO0lBQ3pFLHdFQUF3RTtJQUN4RSxFQUFFLElBQUksRUFBRSxNQUFNLEVBQUUsU0FBUyxFQUFFLDhCQUFhLEVBQUUsTUFBTSxFQUFFLE1BQU0sRUFBRTtJQUMxRCxFQUFFLElBQUksRUFBRSxVQUFVLEVBQUUsU0FBUyxFQUFFLHNDQUFpQixFQUFFLE1BQU0sRUFBRSxVQUFVLEVBQUU7Q0FDekUsQ0FBQztBQUVXLFFBQUEsVUFBVSxHQUFHLENBQUMsd0NBQWtCLEVBQUUsOEJBQWEsRUFBRSxzQ0FBaUIsQ0FBQyxDQUFDO0FBTWpGO0lBQUE7SUFBZ0MsQ0FBQztJQUFwQixnQkFBZ0I7UUFKNUIsZUFBUSxDQUFDO1lBQ04sT0FBTyxFQUFFLENBQUMsaUNBQXdCLENBQUMsT0FBTyxDQUFDLE1BQU0sQ0FBQyxDQUFDO1lBQ25ELE9BQU8sRUFBRSxDQUFDLGlDQUF3QixDQUFDO1NBQ3RDLENBQUM7T0FDVyxnQkFBZ0IsQ0FBSTtJQUFELHVCQUFDO0NBQUEsQUFBakMsSUFBaUM7QUFBcEIsNENBQWdCIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgTmdNb2R1bGUgfSBmcm9tIFwiQGFuZ3VsYXIvY29yZVwiO1xuaW1wb3J0IHsgUm91dGVzIH0gZnJvbSBcIkBhbmd1bGFyL3JvdXRlclwiO1xuaW1wb3J0IHsgTmF0aXZlU2NyaXB0Um91dGVyTW9kdWxlIH0gZnJvbSBcIm5hdGl2ZXNjcmlwdC1hbmd1bGFyL3JvdXRlclwiO1xuaW1wb3J0IHsgU3RhcnNoaXBzQ29tcG9uZW50IH0gZnJvbSBcIi4vc3RhcnNoaXBzL3N0YXJzaGlwcy5jb21wb25lbnRcIjtcbmltcG9ydCB7IFdvcmtDb21wb25lbnQgfSBmcm9tIFwiLi93b3JrL3dvcmsuY29tcG9uZW50XCI7XG5pbXBvcnQgeyBTZXR0aW5nc0NvbXBvbmVudCB9IGZyb20gXCIuL3NldHRpbmdzL3NldHRpbmdzLmNvbXBvbmVudFwiO1xuXG5jb25zdCByb3V0ZXM6IFJvdXRlcyA9IFtcbiAgICB7IHBhdGg6IFwiXCIsIHJlZGlyZWN0VG86IFwiLyhzdGFyc2hpcHM6c3RhcnNoaXBzLy93b3JrOndvcmsvL3NldHRpbmdzOnNldHRpbmdzKVwiLCBwYXRoTWF0Y2g6IFwiZnVsbFwiIH0sXG4gICAgeyBwYXRoOiBcInN0YXJzaGlwc1wiLCBjb21wb25lbnQ6IFN0YXJzaGlwc0NvbXBvbmVudCwgb3V0bGV0OiBcInN0YXJzaGlwc1wiIH0sXG4gICAgLy8geyBwYXRoOiBcInN0YXJzaGlwLWRldGFpbHMvOmlkXCIsIGNvbXBvbmVudDogU3RhcnNoaXBEZXRhaWxzQ29tcG9uZW50fSxcbiAgICB7IHBhdGg6IFwid29ya1wiLCBjb21wb25lbnQ6IFdvcmtDb21wb25lbnQsIG91dGxldDogXCJ3b3JrXCIgfSxcbiAgICB7IHBhdGg6IFwic2V0dGluZ3NcIiwgY29tcG9uZW50OiBTZXR0aW5nc0NvbXBvbmVudCwgb3V0bGV0OiBcInNldHRpbmdzXCIgfVxuXTtcblxuZXhwb3J0IGNvbnN0IENvbXBvbmVudHMgPSBbU3RhcnNoaXBzQ29tcG9uZW50LCBXb3JrQ29tcG9uZW50LCBTZXR0aW5nc0NvbXBvbmVudF07XG5cbkBOZ01vZHVsZSh7XG4gICAgaW1wb3J0czogW05hdGl2ZVNjcmlwdFJvdXRlck1vZHVsZS5mb3JSb290KHJvdXRlcyldLFxuICAgIGV4cG9ydHM6IFtOYXRpdmVTY3JpcHRSb3V0ZXJNb2R1bGVdXG59KVxuZXhwb3J0IGNsYXNzIEFwcFJvdXRpbmdNb2R1bGUgeyB9XG4iXX0=

@@ -2,7 +2,6 @@
     <Label class="action-bar-title" text="Home"></Label>
 </ActionBar>
 
-
 <GridLayout class="page">
     <RadListView [items]="starhipsList" (itemTap)="onTap($event)">
 
@@ -17,6 +16,9 @@
                 </GridLayout>
             </StackLayout>
         </ng-template>
-
+        
     </RadListView>
+
+    <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" horizontalAlignment="center"
+        verticalAlignment="center"></ActivityIndicator>
 </GridLayout>
