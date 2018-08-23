@@ -48,7 +48,7 @@
                 <RadListView [items]="workOrdersList" (itemTap)="onTapOrder($event)">
 
                     <ng-template let-item="item">
-                        <GridLayout verticalAlignment="center" rows="auto, auto" columns="*, *" class="work-order-item-container">
+                        <GridLayout verticalAlignment="center" rows="auto, auto" columns="*, auto" class="work-order-item-container">
 
                             <StackLayout col="0">
                                 <Label style="font-weight: bold;" [text]="item.subject"></Label>
@@ -57,7 +57,7 @@
                                 </StackLayout>
                             </StackLayout>
 
-                            <Image style="width: 40;" row="0" col="1" src="~/icons/arrow.png" stretch="aspectFit"></Image>
+                            <Image style="width: 40; height: 30;" row="0" col="1" src="~/icons/arrow.png" stretch="aspectFit"></Image>
 
                             <StackLayout row="1" col="0" colSpan="2" class="work-order-item-separator"></StackLayout>
                         </GridLayout>

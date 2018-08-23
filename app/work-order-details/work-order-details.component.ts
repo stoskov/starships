@@ -1,47 +1,88 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewContainerRef } from "@angular/core";
 import { StarshipsService } from "~/shared/services/starships.service";
 import { WorkOrdersService } from "~/shared/services/workorders.service";
-import { Starship } from "~/shared/models/starship.model";
 import { PageRoute } from "nativescript-angular/router";
 import { switchMap } from "rxjs/operators";
 import { WorkOrder } from "~/shared/models/work-order.model";
 import { KinveyService } from "~/shared/services/kinvey.service";
+import { confirm } from "ui/dialogs";
+import { WorkOrderComment } from '~/shared/models/work-order-comment.model';
+import { CommentsService } from '~/shared/services/comments.service';
+import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/modal-dialog";
+import { AddCommentComponent } from '~/add-comment/add-comment.component';
 
 @Component({
     selector: "Home",
     moduleId: module.id,
     templateUrl: "./work-order-details.component.html",
     styleUrls: ["./work-order-details.component.css"],
-    providers: [StarshipsService, WorkOrdersService, KinveyService]
+    providers: [StarshipsService, WorkOrdersService, KinveyService, CommentsService, ModalDialogService]
 })
 export class WorkOrderDetailsComponent implements OnInit {
     starship: Object = {};
     isLoading = true;
     id: string;
-    workOrdersList: Array<WorkOrder> = []
+    workOrder: WorkOrder;
+    commentsList: Array<WorkOrderComment> = [];
 
     constructor(
-        private starshipsService: StarshipsService,
         private workOrdersService: WorkOrdersService,
+        private workOrderCommentsService: CommentsService,
+        private modalDialogService: ModalDialogService,
+        private viewContainerRef: ViewContainerRef,
         private pageRoute: PageRoute) { }
 
     ngOnInit(): void {
         this.pageRoute.activatedRoute
             .pipe(switchMap((activatedRoute) => activatedRoute.params))
             .forEach((params) => {
-                this.id = params.id;
-                // return this.loadData(params.id);
-                // return this.loadData("5");
+                this.id = "500C000001H39DMIAZ";
+                // this.id = params.id;                
+                return this.loadData(this.id);
             });
     }
 
-    onTapOrder() {
-        this.workOrdersService.getAllWorkOrders();
+    async onStartWork() {
+        let options = {
+            title: "Confirm Start",
+            message: "Are you sure you want to begin work on this work order?",
+            okButtonText: "Start",
+            cancelButtonText: "Cancel",
+        };
+
+        let confirmResult = await confirm(options);
+
+        if (!confirmResult) {
+            return;
+        }
+
+        this.isLoading = true;
+        this.workOrdersService.startWork(this.id);
+        await this.loadData(this.id);
     }
 
-    private async loadData(starshipId: string) {
-        this.starship = await this.starshipsService.getStarshipById(starshipId);
-        this.workOrdersList = await this.workOrdersService.getWorkOrderPerStarshipId(starshipId);
+    async addComment() {
+        const options: ModalDialogOptions = {
+            viewContainerRef: this.viewContainerRef,
+            context: {},
+            fullscreen: true,
+        };
+
+        let result = await this.modalDialogService.showModal(AddCommentComponent, options);
+
+        if (result.save) {
+            this.isLoading = true;
+
+            this.workOrderCommentsService.addComment(this.id, result.comment);
+            await this.loadData(this.id);
+        }
+    }
+
+    private async loadData(workOrderId: string) {
+        this.isLoading = true;
+
+        this.workOrder = await this.workOrdersService.getWorkOrderById(workOrderId);
+        this.commentsList = await this.workOrderCommentsService.getCommentsByOrderId(workOrderId);
 
         this.isLoading = false;
     }

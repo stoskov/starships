@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var WorkOrder = /** @class */ (function () {
     function WorkOrder(workOrderData) {
         this.id = workOrderData._id;
+        this.caseNumber = workOrderData.CaseNumber;
         this.status = workOrderData.Status;
         this.priority = workOrderData.Priority;
         this.subject = workOrderData.Subject;
@@ -12,3 +13,4 @@ var WorkOrder = /** @class */ (function () {
     return WorkOrder;
 }());
 exports.WorkOrder = WorkOrder;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoid29yay1vcmRlci5tb2RlbC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIndvcmstb3JkZXIubW9kZWwudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQTtJQVNJLG1CQUFZLGFBQWE7UUFDckIsSUFBSSxDQUFDLEVBQUUsR0FBRyxhQUFhLENBQUMsR0FBRyxDQUFDO1FBQzVCLElBQUksQ0FBQyxVQUFVLEdBQUcsYUFBYSxDQUFDLFVBQVUsQ0FBQztRQUMzQyxJQUFJLENBQUMsTUFBTSxHQUFHLGFBQWEsQ0FBQyxNQUFNLENBQUM7UUFDbkMsSUFBSSxDQUFDLFFBQVEsR0FBRyxhQUFhLENBQUMsUUFBUSxDQUFDO1FBQ3ZDLElBQUksQ0FBQyxPQUFPLEdBQUcsYUFBYSxDQUFDLE9BQU8sQ0FBQztRQUNyQyxJQUFJLENBQUMsV0FBVyxHQUFHLGFBQWEsQ0FBQyxXQUFXLENBQUM7UUFDN0MsSUFBSSxDQUFDLFdBQVcsR0FBRyxhQUFhLENBQUMsV0FBVyxDQUFDO0lBQ2pELENBQUM7SUFDTCxnQkFBQztBQUFELENBQUMsQUFsQkQsSUFrQkM7QUFsQlksOEJBQVMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY2xhc3MgV29ya09yZGVyIHtcbiAgICBpZDogc3RyaW5nO1xuICAgIGNhc2VOdW1iZXI6IHN0cmluZztcbiAgICBzdGF0dXM6IHN0cmluZztcbiAgICBwcmlvcml0eTogc3RyaW5nO1xuICAgIHN1YmplY3Q6IHN0cmluZztcbiAgICBkZXNjcmlwdGlvbjogc3RyaW5nO1xuICAgIGNyZWF0ZWREYXRlOiBzdHJpbmc7XG5cbiAgICBjb25zdHJ1Y3Rvcih3b3JrT3JkZXJEYXRhKSB7XG4gICAgICAgIHRoaXMuaWQgPSB3b3JrT3JkZXJEYXRhLl9pZDtcbiAgICAgICAgdGhpcy5jYXNlTnVtYmVyID0gd29ya09yZGVyRGF0YS5DYXNlTnVtYmVyO1xuICAgICAgICB0aGlzLnN0YXR1cyA9IHdvcmtPcmRlckRhdGEuU3RhdHVzO1xuICAgICAgICB0aGlzLnByaW9yaXR5ID0gd29ya09yZGVyRGF0YS5Qcmlvcml0eTtcbiAgICAgICAgdGhpcy5zdWJqZWN0ID0gd29ya09yZGVyRGF0YS5TdWJqZWN0O1xuICAgICAgICB0aGlzLmRlc2NyaXB0aW9uID0gd29ya09yZGVyRGF0YS5EZXNjcmlwdGlvbjtcbiAgICAgICAgdGhpcy5jcmVhdGVkRGF0ZSA9IHdvcmtPcmRlckRhdGEuQ3JlYXRlZERhdGU7XG4gICAgfVxufSJdfQ==

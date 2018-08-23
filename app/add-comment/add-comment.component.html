@@ -1,0 +1,8 @@
+<StackLayout style="padding: 20;">
+    <GridLayout columns="auto, *, auto" rows="*, *" verticalAlignment="top">
+        <Label col="0" style="color: blue;" horizontalAlignment="left" text="Cancel" (tap)="onCancel($event)"></Label>
+        <Label col="1" horizontalAlignment="center" text="Comment"></Label>
+        <Label col="2" style="color: blue;" horizontalAlignment="left" text="Save" (tap)="onSave($event)"></Label>
+        <TextField row="1" colSpan="3" [(ngModel)]="commentText"></TextField>
+    </GridLayout>
+</StackLayout>

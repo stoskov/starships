@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { KinveyService } from "~/shared/services/kinvey.service";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { WorkOrder } from "~/shared/models/work-order.model";
+import { WorkOrderStatus } from '~/shared/enums/work-order-status';
 
 @Injectable()
 export class WorkOrdersService {
@@ -26,5 +27,21 @@ export class WorkOrdersService {
         return orderList.map((order) => {
             return new WorkOrder(order);
         })
+    }
+
+    async getWorkOrderById(workOrderId: string) {
+        await this.kinveyService.login()
+
+        let workOrder = await this.workOrdersDataStore.findById(workOrderId).toPromise();
+        console.log(workOrder);
+
+        return new WorkOrder(workOrder);
+    }
+
+    async startWork(workOrderId) {
+        return await this.workOrdersDataStore.save({
+            _id: workOrderId,
+            Status: WorkOrderStatus.Working
+        });
     }
 }

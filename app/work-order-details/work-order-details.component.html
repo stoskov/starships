@@ -1,7 +1,36 @@
 <ActionBar class="action-bar">
-        <Label class="action-bar-title" text="Settings"></Label>
-    </ActionBar>
-    
-    <GridLayout class="page">
-        <Label class="h3 p-15" [text]="id" textWrap="true"></Label> 
+    <Label class="action-bar-title" text="Work Order Details"></Label>
+</ActionBar>
+
+<ScrollView>
+    <GridLayout>
+        <StackLayout style="padding: 20;" [visibility]="isLoading ? 'collapse' : 'visible'">
+            <StackLayout style="margin-top: 10;" orientation="horizontal">
+                <Label text="Case #: " textWrap="true"></Label>
+                <Label [text]="workOrder.caseNumber" textWrap="true"></Label>
+                <Label text="  " textWrap="true"></Label>
+                <Label [text]="workOrder.id" textWrap="true"></Label>
+            </StackLayout>
+            <Label style="font-weight: bold; font-size: 28;" [text]="workOrder.subject" textWrap="true"></Label>
+            <StackLayout style="margin: 10 0;" orientation="horizontal">
+                <Label style="margin-right: 20;" [text]="workOrder.status" textWrap="true"></Label>
+                <Label style="margin-right: 20;" [text]="workOrder.priority" textWrap="true"></Label>
+                <Label col="2" [text]="workOrder.createdDate" textWrap="true"></Label>
+            </StackLayout>
+            <Label [text]="workOrder.description" textWrap="true"></Label>
+            <Label [text]="workOrder.createdDate" textWrap="true"></Label>
+            <Button style="background-color: blue; color: white;" text="Start Work" (tap)="onStartWork($event)"></Button>
+            <GridLayout columns="*, auto">
+                <Label col="0" style="font-weight: bold; font-size: 16; margin: 10 0;" text="Work Order Comments" textWrap="true"></Label>
+                <Image style="width: 30" src="~/icons/add.png" (tap)="addComment()" col="1"></Image>
+            </GridLayout>
+
+            <StackLayout *ngFor="let item of commentsList" style="margin: 5 0; padding: 10; border-radius: 10; background-color: #eee;">
+                <Label style="font-weight: bold;" [text]="item.createdDate"></Label>
+                <Label style="margin-right: 10;" [text]="item.commentBody" textWrap="true"></Label>
+            </StackLayout>
+
+        </StackLayout>
+        <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
     </GridLayout>
+</ScrollView>
