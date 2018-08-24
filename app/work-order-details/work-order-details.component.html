@@ -5,11 +5,8 @@
 <ScrollView>
     <GridLayout>
         <StackLayout style="padding: 20;" [visibility]="isLoading ? 'collapse' : 'visible'">
-            <StackLayout style="margin-top: 10;" orientation="horizontal">
-                <Label text="Case #: " textWrap="true"></Label>
-                <Label [text]="workOrder.caseNumber" textWrap="true"></Label>
-                <Label text="  " textWrap="true"></Label>
-                <Label [text]="workOrder.id" textWrap="true"></Label>
+            <StackLayout style="margin-top: 10;" orientation="horizontal">                
+                <Label text="Case #: {{workOrder.caseNumber}}" textWrap="true"></Label>
             </StackLayout>
             <Label style="font-weight: bold; font-size: 28;" [text]="workOrder.subject" textWrap="true"></Label>
             <StackLayout style="margin: 10 0;" orientation="horizontal">

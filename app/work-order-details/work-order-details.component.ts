@@ -10,6 +10,7 @@ import { WorkOrderComment } from '~/shared/models/work-order-comment.model';
 import { CommentsService } from '~/shared/services/comments.service';
 import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/modal-dialog";
 import { AddCommentComponent } from '~/add-comment/add-comment.component';
+import { StartWorkComponent } from '~/start-work-comment/start-work.component';
 
 @Component({
     selector: "Home",
@@ -56,8 +57,19 @@ export class WorkOrderDetailsComponent implements OnInit {
             return;
         }
 
+        const workDetailsOptions: ModalDialogOptions = {
+            viewContainerRef: this.viewContainerRef,
+            context: {},
+            fullscreen: true,
+        };
+
         this.isLoading = true;
-        this.workOrdersService.startWork(this.id);
+        await this.workOrdersService.startWork(this.id);
+        this.isLoading = false;
+
+        await this.modalDialogService.showModal(StartWorkComponent, workDetailsOptions);
+
+        this.isLoading = true;
         await this.loadData(this.id);
     }
 

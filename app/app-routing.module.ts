@@ -10,7 +10,7 @@ import { WorkOrderDetailsComponent } from "./work-order-details/work-order-detai
 const routes: Routes = [
     { path: "", redirectTo: "/(starships:starships//work:work//settings:settings)", pathMatch: "full" },
     // { path: "starships", component: StarshipsComponent, outlet: "starships" },
-    { path: "starships", component: StarshipDetailsComponent, outlet: "starships" },
+    { path: "starships", component: WorkOrderDetailsComponent, outlet: "starships" },
     // { path: "starship-details/:id", component: StarshipDetailsComponent, outlet: "starships" },
     // { path: "work-order-details/:id", component: WorkOrderDetailsComponent, outlet: "starships" },
     { path: "work", component: WorkComponent, outlet: "work" },
