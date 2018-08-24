@@ -50,10 +50,11 @@
                     <ng-template let-item="item">
                         <GridLayout verticalAlignment="center" rows="auto, auto" columns="*, auto" class="work-order-item-container">
 
-                            <StackLayout col="0">
-                                <Label style="font-weight: bold;" [text]="item.subject"></Label>
+                            <StackLayout col="0" style="margin: 10 0">
+                                <Label style="font-weight: bold; margin-bottom: 5;" [text]="item.subject"></Label>
                                 <StackLayout orientation="horizontal">
-                                    <Label style="margin-right: 10;" [text]="item.status"></Label>                                    
+                                    <Status [status]="item.status"></Status>
+                                    <Label style="margin-right: 10;"></Label>                                    
                                 </StackLayout>
                             </StackLayout>
 

@@ -13,7 +13,8 @@
             </StackLayout>
             <Label style="font-weight: bold; font-size: 28;" [text]="workOrder.subject" textWrap="true"></Label>
             <StackLayout style="margin: 10 0;" orientation="horizontal">
-                <Label style="margin-right: 20;" [text]="workOrder.status" textWrap="true"></Label>
+                <Status [status]="workOrder.status"></Status>
+                <Label text="  "></Label>
                 <Label style="margin-right: 20;" [text]="workOrder.priority" textWrap="true"></Label>
                 <Label col="2" [text]="workOrder.createdDate" textWrap="true"></Label>
             </StackLayout>

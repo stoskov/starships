@@ -6,6 +6,7 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular/listview-directives";
 import { AddCommentComponent } from "./add-comment/add-comment.component";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { StatusComponent } from '~/shared/components/status/status.component';
 
 @NgModule({
     bootstrap: [
@@ -24,6 +25,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
     declarations: [
         AppComponent,
         AddCommentComponent,
+        StatusComponent,
         ...Components
     ],
     schemas: [
