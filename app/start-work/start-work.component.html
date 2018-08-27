@@ -1,0 +1,14 @@
+<StackLayout style="padding: 20;">
+        <Label style="font-size: 15; margin-bottom: 15;" horizontalAlignment="center" text="Case #: {{workOrder.id}}"></Label>
+        <Label style="font-weight: bold; margin-bottom: 10;" text="Step 1.: Document Work"></Label>
+        <StackLayout style="border-radius: 10; height: 150; background-color: #ccc; margin-bottom: 20;" verticalAlignment="center" (tap)="onTakePicture($)">
+                <Image style="width: 80" src="~/icons/camera.png" horizontalAlignment="center"></Image>
+        </StackLayout>
+        <Label style="font-weight: bold; margin-bottom: 10;" text="Step 2.: Collect Signature"></Label>
+        <Button style="background-color: blue; border-radius: 10; color: white; margin-bottom: 10;" text="Tap to sign" (tap)="onSign($event)"></Button>
+        <StackLayout style="border-radius: 10; height: 150; background-color: #ccc; margin-bottom: 20;" verticalAlignment="center">
+              
+        </StackLayout>
+        <Label style="font-weight: bold; margin-bottom: 10;" text="Step 3.: Complete Work"></Label>
+        <Button style="background-color: pink; border-radius: 10; color: white;" text="Complete Work" (tap)="onCompleteWork($event)"></Button>
+</StackLayout>

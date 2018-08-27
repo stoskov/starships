@@ -44,4 +44,11 @@ export class WorkOrdersService {
             Status: WorkOrderStatus.Working
         });
     }
+
+    async completeWork(workOrderId) {
+        return await this.workOrdersDataStore.save({
+            _id: workOrderId,
+            Status: WorkOrderStatus.Closed
+        });
+    }
 }

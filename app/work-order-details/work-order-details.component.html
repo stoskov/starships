@@ -17,7 +17,7 @@
             </StackLayout>
             <Label [text]="workOrder.description" textWrap="true"></Label>
             <Label [text]="workOrder.createdDate" textWrap="true"></Label>
-            <Button style="background-color: blue; color: white;" text="Start Work" (tap)="onStartWork($event)"></Button>
+            <Button style="background-color: blue; border-radius: 10; color: white;" text="Start Work" (tap)="onStartWork($event)"></Button>
             <GridLayout columns="*, auto">
                 <Label col="0" style="font-weight: bold; font-size: 16; margin: 10 0;" text="Work Order Comments" textWrap="true"></Label>
                 <Image style="width: 30" src="~/icons/add.png" (tap)="addComment()" col="1"></Image>

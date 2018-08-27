@@ -8,20 +8,29 @@ import * as camera from "nativescript-camera";
     templateUrl: "./start-work.component.html",
 })
 export class StartWorkComponent implements OnInit {
-    public commentText: string = "";
+    public workOrder: string = "";
 
     constructor(private params: ModalDialogParams) { }
 
     ngOnInit() {
+        this.workOrder = this.params.context.workOrder;
     }
 
     onSave() {
-        this.params.closeCallback({ save: true, comment: this.commentText });
+
     }
 
     async onTakePicture() {
         let imageAsset = await camera.takePicture();
         let image = new Image();
         image.src = imageAsset;
+    }
+
+    onSign() {
+
+    }
+
+    onCompleteWork() {
+        this.params.closeCallback({ done: false });
     }
 }

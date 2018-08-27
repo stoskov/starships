@@ -7,7 +7,7 @@ import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular/l
 import { AddCommentComponent } from "./add-comment/add-comment.component";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { StatusComponent } from '~/shared/components/status/status.component';
-import { StartWorkComponent } from '~/start-work-comment/start-work.component';
+import { StartWorkComponent } from '~/start-work/start-work.component';
 
 @NgModule({
     bootstrap: [
@@ -15,6 +15,7 @@ import { StartWorkComponent } from '~/start-work-comment/start-work.component';
     ],
     entryComponents: [
         AddCommentComponent,
+        StartWorkComponent,
     ],
     imports: [
         NativeScriptModule,
