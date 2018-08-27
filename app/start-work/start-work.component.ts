@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { ModalDialogParams } from "nativescript-angular/modal-dialog";
 import { Image } from "ui/image";
 import * as camera from "nativescript-camera";
 
@@ -9,6 +9,7 @@ import * as camera from "nativescript-camera";
 })
 export class StartWorkComponent implements OnInit {
     public workOrder: string = "";
+    @ViewChild("documentImg") documentImage: ElementRef<Image>;
 
     constructor(private params: ModalDialogParams) { }
 
@@ -17,13 +18,12 @@ export class StartWorkComponent implements OnInit {
     }
 
     onSave() {
-
     }
 
     async onTakePicture() {
+        camera.requestPermissions();
         let imageAsset = await camera.takePicture();
-        let image = new Image();
-        image.src = imageAsset;
+        this.documentImage.nativeElement.src = imageAsset;
     }
 
     onSign() {

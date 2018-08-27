@@ -8,6 +8,7 @@ import { AddCommentComponent } from "./add-comment/add-comment.component";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { StatusComponent } from '~/shared/components/status/status.component';
 import { StartWorkComponent } from '~/start-work/start-work.component';
+import { DrawingPadComponent } from '~/shared/components/drawing-pad/drawig-pad.component';
 
 @NgModule({
     bootstrap: [
@@ -29,6 +30,7 @@ import { StartWorkComponent } from '~/start-work/start-work.component';
         AddCommentComponent,
         StartWorkComponent,
         StatusComponent,
+        DrawingPadComponent,
         ...Components
     ],
     schemas: [
