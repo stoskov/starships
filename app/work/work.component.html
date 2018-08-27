@@ -1,7 +1,28 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Work"></Label>
+    <Label class="action-bar-title" text="Home"></Label>
 </ActionBar>
 
 <GridLayout class="page">
-    <Label class="h3 p-15" [text]="text" textWrap="true"></Label> 
+        <RadListView [items]="workOrdersList" (itemTap)="onTap($event)">
+
+                <ng-template let-item="item">
+                    <GridLayout verticalAlignment="center" rows="auto, auto" columns="*, auto" class="work-order-item-container">
+
+                        <StackLayout col="0" style="margin: 10 0">
+                            <Label style="font-weight: bold; margin-bottom: 5;" [text]="item.subject"></Label>
+                            <StackLayout orientation="horizontal">
+                                <Status [status]="item.status"></Status>
+                                <Label style="margin-right: 10;"></Label>                                    
+                            </StackLayout>
+                        </StackLayout>
+
+                        <Image style="width: 40; height: 30;" row="0" col="1" src="~/icons/arrow.png" stretch="aspectFit"></Image>
+
+                        <StackLayout row="1" col="0" colSpan="2" class="work-order-item-separator"></StackLayout>
+                    </GridLayout>
+                </ng-template>
+
+            </RadListView>
+
+    <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
 </GridLayout>

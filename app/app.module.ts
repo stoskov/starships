@@ -9,6 +9,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { StatusComponent } from '~/shared/components/status/status.component';
 import { StartWorkComponent } from '~/start-work/start-work.component';
 import { DrawingPadComponent } from '~/shared/components/drawing-pad/drawig-pad.component';
+import { KinveyService } from '~/shared/services/kinvey.service';
 
 @NgModule({
     bootstrap: [
@@ -32,6 +33,9 @@ import { DrawingPadComponent } from '~/shared/components/drawing-pad/drawig-pad.
         StatusComponent,
         DrawingPadComponent,
         ...Components
+    ],
+    providers: [
+        KinveyService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

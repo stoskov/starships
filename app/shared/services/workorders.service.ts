@@ -13,7 +13,11 @@ export class WorkOrdersService {
 
     async getAllWorkOrders() {
         await this.kinveyService.login();
-        return await this.workOrdersDataStore.find().toPromise();
+        let orderList = await this.workOrdersDataStore.find().toPromise();
+
+        return orderList.map((order) => {
+            return new WorkOrder(order);
+        })
     }
 
     async getWorkOrderPerStarshipId(starshipId: string) {
