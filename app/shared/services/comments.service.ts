@@ -5,14 +5,12 @@ import { WorkOrderComment } from "~/shared/models/work-order-comment.model";
 
 @Injectable()
 export class CommentsService {
-    private caseCommentsStore = Kinvey.DataStore.collection("caseComment", Kinvey.DataStoreType.Network);
+    private caseCommentsStore = Kinvey.DataStore.collection("caseComment", Kinvey.DataStoreType.Cache);
 
     constructor(private kinveyService: KinveyService) { }
 
 
     async getCommentsByOrderId(orderdId: string) {
-        await this.kinveyService.login()
-
         const query = new Kinvey.Query();
         query.equalTo("ParentId", orderdId);
 

@@ -2,6 +2,10 @@
     <Label class="action-bar-title" text="Settings"></Label>
 </ActionBar>
 
-<GridLayout class="page">
-    <Label class="h3 p-15" [text]="text" textWrap="true"></Label> 
+<GridLayout style="padding: 30;">
+    <StackLayout verticalAlignment="bottom">
+        <Label text="Logged-in as:" horizontalAlignment="center"></Label>
+        <Label [text]="user.email" horizontalAlignment="center"></Label>
+        <Button style="background-color: #ff6289; border-radius: 10; color: white; margin-top: 20;" text="Logout" (tap)="onLogout($event)"></Button>
+    </StackLayout>
 </GridLayout>

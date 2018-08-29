@@ -12,7 +12,6 @@ export class WorkOrdersService {
     constructor(private kinveyService: KinveyService) { }
 
     async getAllWorkOrders() {
-        await this.kinveyService.login();
         let orderList = await this.workOrdersDataStore.find().toPromise();
 
         return orderList.map((order) => {
@@ -21,8 +20,6 @@ export class WorkOrdersService {
     }
 
     async getWorkOrderPerStarshipId(starshipId: string) {
-        await this.kinveyService.login()
-
         const query = new Kinvey.Query();
         query.equalTo("Starship__c", "01tC0000005Z2KEIA0");
 
@@ -34,8 +31,6 @@ export class WorkOrdersService {
     }
 
     async getWorkOrderById(workOrderId: string) {
-        await this.kinveyService.login()
-
         let workOrder = await this.workOrdersDataStore.findById(workOrderId).toPromise();
         console.log(workOrder);
 

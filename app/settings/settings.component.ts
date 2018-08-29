@@ -1,4 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewContainerRef } from "@angular/core";
+import { KinveyService } from '~/shared/services/kinvey.service';
+import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog';
+import { LoginComponent } from '~/login/login.component';
+import { Kinvey } from 'kinvey-nativescript-sdk';
 
 @Component({
     selector: "Home",
@@ -7,12 +11,28 @@ import { Component, OnInit } from "@angular/core";
 })
 export class SettingsComponent implements OnInit {
     public text = "Settings";
+    user: Kinvey.User;
 
-    constructor() {
-        // Use the component constructor to inject providers.
+    constructor(
+        private kinveyService: KinveyService,
+        private modalDialogService: ModalDialogService,
+        private viewContainerRef: ViewContainerRef) { }
+
+    async ngOnInit() {
+        this.user = this.kinveyService.getActiveUser();
+        console.log(this.user);
     }
 
-    ngOnInit(): void {
-        // Init your component properties here.
+    async onLogout() {
+        await this.kinveyService.logout();
+
+        const options: ModalDialogOptions = {
+            viewContainerRef: this.viewContainerRef,
+            context: {},
+            fullscreen: true,
+        };
+
+        let result = await this.modalDialogService.showModal(LoginComponent, options);
+
     }
 }

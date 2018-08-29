@@ -2,14 +2,14 @@
     <Label class="action-bar-title" text="Home"></Label>
 </ActionBar>
 
-<GridLayout class="page">
+<GridLayout class="page" style="margin: 20;">
         <RadListView [items]="workOrdersList" (itemTap)="onTap($event)">
 
                 <ng-template let-item="item">
-                    <GridLayout verticalAlignment="center" rows="auto, auto" columns="*, auto" class="work-order-item-container">
+                    <GridLayout verticalAlignment="center" rows="auto, auto" columns="*, auto" >
 
                         <StackLayout col="0" style="margin: 10 0">
-                            <Label style="font-weight: bold; margin-bottom: 5;" [text]="item.subject"></Label>
+                            <Label style="font-weight: bold; margin-bottom: 10;" [text]="item.subject? item.subject : '(No subject)'"></Label>
                             <StackLayout orientation="horizontal">
                                 <Status [status]="item.status"></Status>
                                 <Label style="margin-right: 10;"></Label>                                    
@@ -18,7 +18,7 @@
 
                         <Image style="width: 40; height: 30;" row="0" col="1" src="~/icons/arrow.png" stretch="aspectFit"></Image>
 
-                        <StackLayout row="1" col="0" colSpan="2" class="work-order-item-separator"></StackLayout>
+                        <StackLayout row="1" col="0" colSpan="2" style="border-width: 1; border-color: #ccc; margin-top: 5;"></StackLayout>
                     </GridLayout>
                 </ng-template>
 

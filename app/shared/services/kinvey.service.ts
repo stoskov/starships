@@ -9,11 +9,23 @@ Kinvey.init({
 
 @Injectable()
 export class KinveyService {
-    login(): Promise<any> {
-        if (!!Kinvey.User.getActiveUser()) {
+    async login(username: string, password: string) {
+        if (this.isAuthenticated()) {
             return Promise.resolve();
         } else {
-            return Kinvey.User.login("admin", "admin");
+            return await Kinvey.User.login(username, password);
         }
+    }
+
+    async logout() {
+        return await Kinvey.User.logout();
+    }
+
+    isAuthenticated(): Boolean {
+        return !!this.getActiveUser();
+    }
+
+    getActiveUser() {
+        return Kinvey.User.getActiveUser();
     }
 }

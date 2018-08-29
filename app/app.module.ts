@@ -10,6 +10,7 @@ import { StatusComponent } from '~/shared/components/status/status.component';
 import { StartWorkComponent } from '~/start-work/start-work.component';
 import { DrawingPadComponent } from '~/shared/components/drawing-pad/drawig-pad.component';
 import { KinveyService } from '~/shared/services/kinvey.service';
+import { LoginComponent } from '~/login/login.component';
 
 @NgModule({
     bootstrap: [
@@ -18,6 +19,7 @@ import { KinveyService } from '~/shared/services/kinvey.service';
     entryComponents: [
         AddCommentComponent,
         StartWorkComponent,
+        LoginComponent
     ],
     imports: [
         NativeScriptModule,
@@ -32,6 +34,7 @@ import { KinveyService } from '~/shared/services/kinvey.service';
         StartWorkComponent,
         StatusComponent,
         DrawingPadComponent,
+        LoginComponent,
         ...Components
     ],
     providers: [

@@ -37,7 +37,6 @@ export class WorkOrderDetailsComponent implements OnInit {
         this.pageRoute.activatedRoute
             .pipe(switchMap((activatedRoute) => activatedRoute.params))
             .forEach((params) => {
-                // this.id = "500C000001H39DMIAZ";
                 this.id = params.id;                
                 return this.loadData(this.id);
             });

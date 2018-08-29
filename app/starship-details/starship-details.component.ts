@@ -30,7 +30,6 @@ export class StarshipDetailsComponent implements OnInit {
             .pipe(switchMap((activatedRoute) => activatedRoute.params))
             .forEach((params) => {
                 return this.loadData(params.id);
-                // return this.loadData("5");
             });
     }
 
