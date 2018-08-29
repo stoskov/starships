@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Kinvey } from 'kinvey-nativescript-sdk';
+import { Kinvey } from "kinvey-nativescript-sdk";
 
 Kinvey.init({
     appKey: "kid_rJswLnZLm",
@@ -15,6 +15,10 @@ export class KinveyService {
         } else {
             return await Kinvey.User.login(username, password);
         }
+    }
+
+    async loginWithMIC() {
+        return await Kinvey.User.loginWithMIC("http://example.com");
     }
 
     async logout() {

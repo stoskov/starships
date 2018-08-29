@@ -3,6 +3,8 @@
         <TextField [(ngModel)]="username" hint="Username"></TextField>
         <TextField [(ngModel)]="password" secure="true" hint="Password"></TextField>
         <Button style="background-color: blue; border-radius: 10; color: white; margin-top: 20;" text="Login" (tap)="onLogin($event)"></Button>
+        <StackLayout row="1" col="0" colSpan="2" style="border-width: 1; border-color: #ccc; margin: 10 0;"></StackLayout>
+        <Button style="background-color: blue; border-radius: 10; color: white; margin-top: 20;" text="Login with Open ID" (tap)="onLoginWitMIC($event)"></Button>
     </StackLayout>
     <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" horizontalAlignment="center"
         verticalAlignment="center"></ActivityIndicator>

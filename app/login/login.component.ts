@@ -22,4 +22,9 @@ export class LoginComponent implements OnInit {
         this.isLoading = false;
         this.params.closeCallback();
     }
+
+    async onLoginWitMIC() {
+        this.params.closeCallback();
+        this.kinveyService.loginWithMIC();
+    }
 }
